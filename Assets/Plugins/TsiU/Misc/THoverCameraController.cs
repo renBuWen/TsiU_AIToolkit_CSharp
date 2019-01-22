@@ -4,6 +4,9 @@ namespace TsiU
 {
     public class THoverCameraController : MonoBehaviour
     {
+
+        // Note :【】相机脚本
+
         private enum MouseButton { Left = 0, Right = 1, Middle = 2, None = 3 }
         private readonly string MouseHorizontalAxisName = "Mouse X";
         private readonly string MouseVerticalAxisName = "Mouse Y";

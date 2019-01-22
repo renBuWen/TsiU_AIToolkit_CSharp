@@ -10,17 +10,17 @@ namespace AIToolkitDemo
         void Awake()
         {
             _aiUpdater =
-                delegate(AIEntity entity, float gameTime, float deltaTime)
+                delegate (AIEntity entity, float gameTime, float deltaTime)
                 {
                     return entity.UpdateAI(gameTime, deltaTime);
                 };
             _requestUpdater =
-                delegate(AIEntity entity, float gameTime, float deltaTime)
+                delegate (AIEntity entity, float gameTime, float deltaTime)
                 {
                     return entity.UpdateReqeust(gameTime, deltaTime);
                 };
             _behaviorUpdater =
-                delegate(AIEntity entity, float gameTime, float deltaTime)
+                delegate (AIEntity entity, float gameTime, float deltaTime)
                 {
                     return entity.UpdateBehavior(gameTime, deltaTime);
                 };
@@ -29,9 +29,9 @@ namespace AIToolkitDemo
         {
             //update global timer
             GameTimer.instance.UpdateTime();
-            
+
             float deltaTime = GameTimer.instance.deltaTime;
-            float gameTime  = GameTimer.instance.gameTime;
+            float gameTime = GameTimer.instance.gameTime;
 
             AIEnityManager entityMgr = AIEnityManager.instance;
             //Update AI
@@ -52,7 +52,8 @@ namespace AIToolkitDemo
             if (GUILayout.Button("Add Entity"))
             {
                 GameObject go = GameResourceManager.instance.LoadResource("Zombie");
-                if(go != null){
+                if (go != null)
+                {
                     AIEnityManager.instance.AddEntity(go.AddComponent<AIEntity>().Init());
                 }
             }

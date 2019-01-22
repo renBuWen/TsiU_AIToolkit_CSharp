@@ -5,19 +5,19 @@ namespace AIToolkitDemo
 {
     class AIEntityWorkingData : TBTWorkingData
     {
-        public AIEntity entity          { get; set; }
-        public Transform entityTF       { get; set; }
-        public Animator entityAnimator  { get; set; }
-        public float gameTime           { get; set; }
-        public float deltaTime          { get; set; }
+        public AIEntity entity { get; set; }
+        public Transform entityTF { get; set; }
+        public Animator entityAnimator { get; set; }
+        public float gameTime { get; set; }
+        public float deltaTime { get; set; }
     }
 
     public class AIEntityBehaviorTreeFactory
     {
         private static TBTAction _bevTreeDemo1;
-        static public TBTAction GetBehaviorTreeDemo1()
+         public static TBTAction GetBehaviorTreeDemo1()
         {
-            if(_bevTreeDemo1 != null)
+            if (_bevTreeDemo1 != null)
             {
                 return _bevTreeDemo1;
             }
@@ -80,7 +80,7 @@ namespace AIToolkitDemo
         protected override void onEnter(TBTWorkingData wData)
         {
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
-            if(thisData.entity.IsDead)
+            if (thisData.entity.IsDead)
             {
                 thisData.entity.PlayAnimation("Reborn");
             }
@@ -105,7 +105,7 @@ namespace AIToolkitDemo
                 int ret = TBTRunningStatus.EXECUTING;
                 Vector3 toTarget = TMathUtils.GetDirection2D(targetPos, currentPos);
                 float movingStep = 0.5f * thisData.deltaTime;
-                if(movingStep > distToTarget)
+                if (movingStep > distToTarget)
                 {
                     movingStep = distToTarget;
                     ret = TBTRunningStatus.FINISHED;
@@ -144,7 +144,7 @@ namespace AIToolkitDemo
                 Vector3 curFacing = thisData.entityTF.forward;
                 float dotV = Vector3.Dot(toTarget, curFacing);
                 float deltaAngle = Mathf.Acos(Mathf.Clamp(dotV, -1f, 1f));
-                if(deltaAngle < 0.1f)
+                if (deltaAngle < 0.1f)
                 {
                     thisData.entityTF.forward = toTarget;
                     return TBTRunningStatus.FINISHED;
@@ -157,7 +157,7 @@ namespace AIToolkitDemo
                     {
                         angleToTurn = -angleToTurn;
                     }
-                    thisData.entityTF.Rotate(Vector3.up, angleToTurn*Mathf.Rad2Deg, Space.World);
+                    thisData.entityTF.Rotate(Vector3.up, angleToTurn * Mathf.Rad2Deg, Space.World);
                 }
             }
             return TBTRunningStatus.EXECUTING;

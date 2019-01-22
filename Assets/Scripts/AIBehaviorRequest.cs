@@ -9,7 +9,9 @@ namespace AIToolkitDemo
             this.timeStamp = timeStamp;
             this.nextMovingTarget = nextMovingTarget;
         }
-        public float timeStamp          { get; private set; }
+
+        // Note :【03】属性成熟的写法
+        public float timeStamp { get; private set; }
         public Vector3 nextMovingTarget { get; private set; }
     }
 }

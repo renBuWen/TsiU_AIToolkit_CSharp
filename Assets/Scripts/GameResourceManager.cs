@@ -6,6 +6,8 @@ namespace AIToolkitDemo
 {
     class GameResourceManager : TSingleton<GameResourceManager>
     {
+        //! 先从字典里取，没有在LOAD
+
         private Dictionary<string, GameObject> _resourceDict;
         public GameResourceManager()
         {
